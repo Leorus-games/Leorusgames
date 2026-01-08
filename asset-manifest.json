@@ -2,17 +2,17 @@
   "files": {
     "main.css": "/static/css/main.a49ce270.css",
     "main.js": "/static/js/main.5b0dcc6e.js",
-    "static/media/logo1.png": "/static/media/logo1.4fd7250d559377842f4b.png",
-    "static/media/logo.png": "/static/media/logo.d774793125aad8c6c8d9.png",
-    "static/media/logow.png": "/static/media/logow.ffe9e9e8d6b73f1e464e.png",
-    "static/media/logob.png": "/static/media/logob.70afddd96c3a7e10e8d0.png",
-    "static/media/joinw.svg": "/static/media/joinw.c728e2b11f57748846d255c3d7d8f7e5.svg",
+    "static/media/logo1.png": "https://leorus-games.github.io/Leorusgames/static/media/logo1.4fd7250d559377842f4b.png",
+    "static/media/logo.png": "https://leorus-games.github.io/Leorusgames/static/media/logo.d774793125aad8c6c8d9.png",
+    "static/media/logow.png": "https://leorus-games.github.io/Leorusgames/static/media/logow.ffe9e9e8d6b73f1e464e.png",
+    "static/media/logob.png": "https://leorus-games.github.io/Leorusgames/static/media/logob.70afddd96c3a7e10e8d0.png",
+    "static/media/joinw.svg": "https://leorus-games.github.io/Leorusgames/static/media/joinw.c728e2b11f57748846d255c3d7d8f7e5.svg",
     "index.html": "/index.html",
-    "main.a49ce270.css.map": "/static/css/main.a49ce270.css.map",
-    "main.5b0dcc6e.js.map": "/static/js/main.5b0dcc6e.js.map"
+    "main.a49ce270.css.map": "/https://leorus-games.github.io/Leorusgames/static/css/main.a49ce270.css.map",
+    "main.5b0dcc6e.js.map": "https://leorus-games.github.io/Leorusgames//static/js/main.5b0dcc6e.js.map"
   },
   "entrypoints": [
-    "static/css/main.a49ce270.css",
-    "static/js/main.5b0dcc6e.js"
+    "https://leorus-games.github.io/Leorusgames/static/css/main.a49ce270.css",
+    "https://leorus-games.github.io/Leorusgames/static/js/main.5b0dcc6e.js"
   ]
 }
