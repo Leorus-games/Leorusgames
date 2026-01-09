@@ -1,1 +1,1387 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="https://leorus-games.github.io/Leorusgames/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="https://leorus-games.github.io/Leorusgames/logo192.png"/><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap" rel="stylesheet"><link rel="manifest" href="https://leorus-games.github.io/Leorusgames/manifest.json"/><title>Leorus games</title><script defer="defer" src="https://leorus-games.github.io/Leorusgames/static/js/main.7fd8a432.js"></script><link href="https://leorus-games.github.io/Leorusgames/static/css/main.a49ce270.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leorus Games | Mobile Game Development Studio in Pakistan</title>
+    <meta
+      name="description"
+      content="Leorus Games is a premier mobile game developer based in Lahore, Pakistan. We create hyper-casual, 2D, 3D, and simulation games for global audiences."
+    />
+    <meta
+      name="keywords"
+      content="mobile game developer, hyper-casual games, 2D games, 3D games, simulation games, game studio Pakistan, Lahore game developer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="icon" href="favicon.ico" />
+    <style>
+      :root {
+        --primary: #6c63ff;
+        --primary-dark: #554fd8;
+        --secondary: #ff6584;
+        --dark: #121212;
+        --darker: #0a0a0a;
+        --light: #f8f9fa;
+        --gray: #b0b7c3;
+        --dark-gray: #2d3748;
+        --card-bg: #1e1e1e;
+        --border-color: #333333;
+        --transition: all 0.3s ease;
+        --shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        --border-radius: 10px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--dark);
+        color: var(--gray);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: rgba(18, 18, 18, 0.95);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo-icon {
+        color: var(--primary);
+        font-size: 2rem;
+      }
+
+      .logo-text {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--light);
+      }
+
+      .logo-text span {
+        color: var(--primary);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--gray);
+        font-weight: 600;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      nav a:hover {
+        color: var(--primary);
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary);
+        transition: var(--transition);
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      .mobile-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--gray);
+      }
+
+      /* Theme Toggle */
+      .theme-toggle {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        color: var(--gray);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-left: 15px;
+        transition: var(--transition);
+      }
+
+      .theme-toggle:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, var(--darker) 0%, #1a1a2e 100%);
+        color: var(--light);
+        padding: 100px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(108, 99, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 101, 132, 0.05) 0%,
+            transparent 50%
+          );
+        z-index: 0;
+      }
+
+      .hero .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        color: var(--light);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        opacity: 0.9;
+        color: var(--gray);
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: var(--primary-dark);
+        transition: var(--transition);
+        z-index: -1;
+      }
+
+      .btn:hover::before {
+        width: 100%;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--primary);
+        margin-left: 15px;
+      }
+
+      .btn-outline::before {
+        background-color: var(--primary);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      /* Section Common Styles */
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--light);
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 3px;
+        background-color: var(--primary);
+      }
+
+      .section-title p {
+        color: var(--gray);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* About Section */
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: var(--light);
+      }
+
+      .stats {
+        display: flex;
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .stat-item {
+        text-align: center;
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--border-color);
+        transition: var(--transition);
+      }
+
+      .stat-item:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        line-height: 1;
+      }
+
+      .stat-text {
+        font-size: 0.9rem;
+        color: var(--gray);
+        margin-top: 5px;
+      }
+
+      .about-image {
+        flex: 1;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Game Categories */
+      .categories {
+        background-color: var(--darker);
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .category-card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        text-align: center;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        border: 1px solid var(--border-color);
+      }
+
+      .category-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+      }
+
+      .category-icon {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      .category-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--light);
+      }
+
+      /* Featured Games */
+      .game-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .game-card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        border: 1px solid var(--border-color);
+      }
+
+      .game-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .game-image {
+        height: 200px;
+        background-color: var(--dark-gray);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .game-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .game-card:hover .game-image img {
+        transform: scale(1.05);
+      }
+
+      .game-tag {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: var(--secondary);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        z-index: 2;
+      }
+
+      .game-content {
+        padding: 20px;
+      }
+
+      .game-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--light);
+      }
+
+      .game-content p {
+        color: var(--gray);
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+      }
+
+      /* Career Section */
+      .career {
+        background-color: var(--darker);
+      }
+
+      .career-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .career-text {
+        flex: 1;
+      }
+
+      .career-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: var(--light);
+      }
+
+      .positions {
+        flex: 1;
+      }
+
+      .position-card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        transition: var(--transition);
+      }
+
+      .position-card:hover {
+        border-color: var(--primary);
+        transform: translateX(5px);
+      }
+
+      .position-card h4 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: var(--light);
+      }
+
+      .position-tags {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+
+      .position-tag {
+        background-color: rgba(108, 99, 255, 0.1);
+        color: var(--primary);
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      /* Contact Section */
+      .contact-container {
+        display: flex;
+        gap: 50px;
+      }
+
+      .contact-info {
+        flex: 1;
+      }
+
+      .contact-card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow);
+        margin-bottom: 30px;
+        border: 1px solid var(--border-color);
+      }
+
+      .contact-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: var(--light);
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(108, 99, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        color: var(--primary);
+        font-size: 1.2rem;
+      }
+
+      .contact-form {
+        flex: 1;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--light);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: var(--transition);
+        color: var(--gray);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--darker);
+        color: var(--gray);
+        padding: 60px 0 30px;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 40px;
+      }
+
+      .footer-column {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 30px;
+      }
+
+      .footer-column h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        position: relative;
+        color: var(--light);
+      }
+
+      .footer-column h3::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: var(--gray);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+        padding-left: 5px;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray);
+        text-decoration: none;
+        transition: var(--transition);
+        border: 1px solid var(--border-color);
+      }
+
+      .social-icon:hover {
+        background-color: var(--primary);
+        color: white;
+        transform: translateY(-3px);
+        border-color: var(--primary);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid var(--border-color);
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      .copyright a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      /* Animation for elements */
+      .fade-in {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .about-content,
+        .career-content {
+          flex-direction: column;
+        }
+
+        .contact-container {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        nav ul {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background-color: rgba(30, 30, 30, 0.95);
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          box-shadow: var(--shadow);
+          transform: translateY(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: var(--transition);
+          z-index: 999;
+          backdrop-filter: blur(10px);
+          border-bottom: 1px solid var(--border-color);
+        }
+
+        nav ul.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+
+        .stats {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img src="./logow.ffe9e9e8d6b73f1e464e.png" alt="logo" />
+        </div>
+
+        <nav>
+          <ul id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#categories">Game Categories</a></li>
+            <li><a href="#games">Our Games</a></li>
+            <li><a href="#career">Careers</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="mobile-toggle" id="mobileToggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <h1 class="fade-in">Creating Mobile Games That Everyone Can Enjoy</h1>
+        <p class="fade-in">
+          Leorus Games is a premier mobile game development studio based in
+          Lahore, Pakistan. We specialize in creating hyper-casual, 2D, 3D, and
+          simulation games for global audiences.
+        </p>
+        <a href="#games" class="btn fade-in">Explore Our Games</a>
+        <a href="#career" class="btn btn-outline fade-in">Join Our Team</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Leorus Games</h2>
+          <p>
+            We are passionate creators dedicated to developing high-quality
+            mobile games that bring joy to players worldwide.
+          </p>
+        </div>
+
+        <div class="about-content">
+          <div class="about-text fade-in">
+            <h3>Mobile Game Development Studio in Lahore, Pakistan</h3>
+            <p>
+              Founded in 2021, Leorus Games has quickly established itself as a
+              leading mobile game developer with a focus on hyper-casual games.
+              Our team consists of passionate and creative minds who work
+              together to create engaging, high-quality games that can be
+              enjoyed by anyone.
+            </p>
+            <p>
+              From concept to publication, we handle everything in-house at our
+              Lahore studio. Our portfolio includes multiple successful titles
+              in the hyper-casual genre, with plans to expand into 2D, 3D, and
+              simulation games.
+            </p>
+
+            <div class="stats">
+              <div class="stat-item">
+                <div class="stat-number">3+</div>
+                <div class="stat-text">Years Experience</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-text">Games Published</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-text">Team Members</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">1M+</div>
+                <div class="stat-text">Downloads</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-image fade-in">
+            <!-- This would be an actual image in production -->
+            <div
+              style="
+                width: 100%;
+                height: 400px;
+                background: linear-gradient(
+                  135deg,
+                  var(--primary) 0%,
+                  var(--secondary) 100%
+                );
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 1.5rem;
+              "
+            >
+              <i
+                class="fas fa-gamepad"
+                style="font-size: 4rem; margin-right: 15px"
+              ></i>
+              <div>Leorus Games Studio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Categories -->
+    <section class="categories" id="categories">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Game Categories</h2>
+          <p>
+            We develop games across multiple genres to cater to diverse player
+            preferences.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <div class="category-card fade-in">
+            <div class="category-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Hyper-Casual Games</h3>
+            <p>
+              Simple, addictive games with easy-to-learn mechanics that provide
+              quick entertainment for players of all ages.
+            </p>
+          </div>
+
+          <div class="category-card fade-in">
+            <div class="category-icon">
+              <i class="fas fa-vector-square"></i>
+            </div>
+            <h3>2D Games</h3>
+            <p>
+              Engaging 2D experiences with compelling gameplay, vibrant visuals,
+              and immersive storytelling.
+            </p>
+          </div>
+
+          <div class="category-card fade-in">
+            <div class="category-icon">
+              <i class="fas fa-cube"></i>
+            </div>
+            <h3>3D Games</h3>
+            <p>
+              Immersive 3D worlds with stunning graphics, realistic physics, and
+              captivating gameplay mechanics.
+            </p>
+          </div>
+
+          <div class="category-card fade-in">
+            <div class="category-icon">
+              <i class="fas fa-sim-card"></i>
+            </div>
+            <h3>Simulation Games</h3>
+            <p>
+              Real-world simulations that allow players to experience different
+              scenarios, professions, and activities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Games -->
+    <section id="games">
+      <div class="container">
+        <div class="section-title">
+          <h2>Featured Games</h2>
+          <p>Check out some of our popular and upcoming game titles.</p>
+        </div>
+
+        <div class="game-grid">
+          <div class="game-card fade-in">
+            <div class="game-image">
+              <div
+                style="
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(
+                    135deg,
+                    var(--secondary) 0%,
+                    var(--primary) 100%
+                  );
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  font-size: 2rem;
+                "
+              >
+                <i class="fas fa-palette"></i>
+              </div>
+              <div class="game-tag">Hyper-Casual</div>
+            </div>
+            <div class="game-content">
+              <h3>Color Dash</h3>
+              <p>
+                A fast-paced hyper-casual game where players tap to switch
+                colors and match obstacles. Simple yet addictive gameplay with
+                vibrant visuals.
+              </p>
+              <a href="#" class="btn">Coming Soon</a>
+            </div>
+          </div>
+
+          <div class="game-card fade-in">
+            <div class="game-image">
+              <div
+                style="
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  font-size: 2rem;
+                "
+              >
+                <i class="fas fa-dragon"></i>
+              </div>
+              <div class="game-tag">3D Adventure</div>
+            </div>
+            <div class="game-content">
+              <h3>Mystic Quest</h3>
+              <p>
+                Embark on an epic 3D adventure through mystical lands. Solve
+                puzzles, battle creatures, and uncover ancient secrets in this
+                immersive RPG.
+              </p>
+              <a href="#" class="btn">In Development</a>
+            </div>
+          </div>
+
+          <div class="game-card fade-in">
+            <div class="game-image">
+              <div
+                style="
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  font-size: 2rem;
+                "
+              >
+                <i class="fas fa-city"></i>
+              </div>
+              <div class="game-tag">Simulation</div>
+            </div>
+            <div class="game-content">
+              <h3>City Builder Pro</h3>
+              <p>
+                Build and manage your dream city in this detailed simulation
+                game. Balance resources, expand infrastructure, and keep your
+                citizens happy.
+              </p>
+              <a href="#" class="btn">Available Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Career Section -->
+    <section class="career" id="career">
+      <div class="container">
+        <div class="section-title">
+          <h2>Career Opportunities</h2>
+          <p>
+            Join our passionate team and help create the next hit mobile game.
+          </p>
+        </div>
+
+        <div class="career-content">
+          <div class="career-text fade-in">
+            <h3>Unleash Your Potential With Leorus Games</h3>
+            <p>
+              We're always looking for talented and passionate individuals to
+              join our growing team. At Leorus Games, you'll work in a creative,
+              collaborative environment where your ideas matter.
+            </p>
+            <p>
+              Our Lahore-based studio offers opportunities in game design,
+              programming, art, marketing, and more. We believe in nurturing
+              talent and providing opportunities for growth and learning.
+            </p>
+            <a href="#contact" class="btn">Apply Now</a>
+          </div>
+
+          <div class="positions">
+            <div class="position-card fade-in">
+              <h4>Game Developer (Unity)</h4>
+              <p>
+                We're looking for an experienced Unity developer to work on our
+                upcoming hyper-casual and 3D game projects.
+              </p>
+              <div class="position-tags">
+                <span class="position-tag">Full-time</span>
+                <span class="position-tag">Lahore</span>
+                <span class="position-tag">2+ years experience</span>
+              </div>
+            </div>
+
+            <div class="position-card fade-in">
+              <h4>2D/3D Game Artist</h4>
+              <p>
+                Join our art team to create stunning visuals for our mobile
+                games across different genres and styles.
+              </p>
+              <div class="position-tags">
+                <span class="position-tag">Full-time</span>
+                <span class="position-tag">Lahore</span>
+                <span class="position-tag">1+ years experience</span>
+              </div>
+            </div>
+
+            <div class="position-card fade-in">
+              <h4>Game Designer</h4>
+              <p>
+                Help design engaging gameplay mechanics, levels, and features
+                for our upcoming mobile titles.
+              </p>
+              <div class="position-tags">
+                <span class="position-tag">Full-time</span>
+                <span class="position-tag">Lahore</span>
+                <span class="position-tag">Remote options</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact Us</h2>
+          <p>
+            Get in touch with us for business inquiries, career opportunities,
+            or just to say hello!
+          </p>
+        </div>
+
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-card fade-in">
+              <h3>Contact Information</h3>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div>
+                  <h4>Founder</h4>
+                  <p>Syed Muhammad Sadiq Husaini</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h4>Address</h4>
+                  <p>
+                    Office #606, LandMark Plaza, Jail Road, Lahore, Pakistan
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h4>Email</h4>
+                  <p>sadiqhusaini@hotmail.com</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <h4>Phone</h4>
+                  <p>+92 3074674186</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-icons">
+              <a href="#" class="social-icon"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-icon"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="contact-form fade-in">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control"
+                  placeholder="Your Name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  placeholder="Your Email"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  class="form-control"
+                  placeholder="Message Subject"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea
+                  id="message"
+                  class="form-control"
+                  placeholder="Type your message here..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Leorus Games</h3>
+            <p>
+              We are a mobile game developer and studio based in Lahore,
+              Pakistan. Our aim is to create mobile games that can be enjoyed by
+              anyone!
+            </p>
+            <div class="social-icons">
+              <a href="#" class="social-icon"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#categories">Game Categories</a></li>
+              <li><a href="#games">Our Games</a></li>
+              <li><a href="#career">Careers</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Game Categories</h3>
+            <ul class="footer-links">
+              <li><a href="#categories">Hyper-Casual Games</a></li>
+              <li><a href="#categories">2D Games</a></li>
+              <li><a href="#categories">3D Games</a></li>
+              <li><a href="#categories">Simulation Games</a></li>
+              <li><a href="#games">Upcoming Titles</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact Info</h3>
+            <ul class="footer-links">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> Office #606, LandMark
+                Plaza, Jail Road, Lahore
+              </li>
+              <li><i class="fas fa-envelope"></i> sadiqhusaini@hotmail.com</li>
+              <li><i class="fas fa-phone"></i> +92 3074674186</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>
+            &copy; 2021-2023 Leorus Games. All rights reserved. |
+            <a href="/terms.html">Terms and Conditions</a> |
+            <a href="/privacy.html">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Navigation Toggle
+      const mobileToggle = document.getElementById("mobileToggle");
+      const navMenu = document.getElementById("navMenu");
+
+      mobileToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        mobileToggle.innerHTML = navMenu.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll("nav a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("active");
+          mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      // Form submission
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thank you for your message! We will get back to you soon.");
+          this.reset();
+        });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with fade-in class
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
